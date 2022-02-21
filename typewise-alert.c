@@ -4,7 +4,7 @@
 const BatteryCharacter TestBatteryCharacter = 
 {
     .coolingType = PASSIVE_COOLING,
-    .brand = 'L',
+    .brand[] = 'Li',
 };
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
