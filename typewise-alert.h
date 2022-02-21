@@ -32,7 +32,7 @@ typedef struct {
 const BatteryCharacter TestBatteryCharacter = 
 {
     .coolingType = PASSIVE_COOLING,
-    .brand = 'Li',
+    .brand = 'L',
 };
 
 void checkAndAlert(
