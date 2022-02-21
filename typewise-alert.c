@@ -1,11 +1,6 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-const BatteryCharacter TestBatteryCharacter = 
-{
-    .coolingType = PASSIVE_COOLING,
-    .brand[] = 'Li',
-};
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
