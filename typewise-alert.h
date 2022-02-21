@@ -1,5 +1,9 @@
 #pragma once
-
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+  
 typedef enum {
   PASSIVE_COOLING,
   HI_ACTIVE_COOLING,
@@ -36,3 +40,7 @@ void checkAndAlert(
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
+  
+#ifdef __cplusplus
+}
+#endif
