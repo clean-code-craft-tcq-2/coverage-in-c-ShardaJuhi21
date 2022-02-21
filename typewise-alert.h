@@ -25,6 +25,12 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
+const BatteryCharacter TestBatteryCharacter = 
+{
+    .coolingType = PASSIVE_COOLING,
+    .brand = "Lithium"
+};
+
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
