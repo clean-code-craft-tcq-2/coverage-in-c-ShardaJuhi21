@@ -25,10 +25,10 @@ retVal = apicooling(coolingType, temperatureInC);
 BreachType apicooling( CoolingType coolingType, double temperatureInC)
 {
   int lowerLimit =0;
-  int upperLimit = 40;
+  int upperLimit = 35;
 switch(coolingType) {
-    case PASSIVE_COOLING:
-      upperLimit = 35;    
+    case MED_ACTIVE_COOLING:
+      upperLimit = 40;    
       break;
     case HI_ACTIVE_COOLING:
       upperLimit = 45;
