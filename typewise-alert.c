@@ -14,9 +14,10 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
 
 BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
+  double ltemp = temperatureInC;
   BreachType retVal;
   if (coolingType !=END){
-retVal = apicooling(coolingType, temperatureInC);
+retVal = apicooling(coolingType, ltemp);
 }
 }
 
