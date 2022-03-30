@@ -11,6 +11,9 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING, 12) == TOO_LOW);
   REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING, 12) == TOO_HIGH);
   REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING, 25) == NORMAL);
+  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar, 12) == TRUE);
+  REQUIRE(checkAndAlert(TO_EMAIL, 25) == FALSE);
+  
  }
 // TEST_CASE("infers the breach according to alerter") {
 // REQUIRE(checkAndAlert(TO_CONTROLLER,TestBatteryCharacter,12));
