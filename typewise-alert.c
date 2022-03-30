@@ -16,21 +16,22 @@ BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
   int lowerLimit = 0;
   int upperLimit = 0;
+  BreachType retVal;
   switch(coolingType) {
     case PASSIVE_COOLING:
-      lowerLimit = 0;
       upperLimit = 35;
+      retVal= inferBreach(temperatureInC, lowerLimit, upperLimit);
       break;
     case HI_ACTIVE_COOLING:
-      lowerLimit = 0;
       upperLimit = 45;
+      retVal= inferBreach(temperatureInC, lowerLimit, upperLimit);
       break;
     case MED_ACTIVE_COOLING:
-      lowerLimit = 0;
       upperLimit = 40;
+      retVal= inferBreach(temperatureInC, lowerLimit, upperLimit);
       break;
   }
-  return inferBreach(temperatureInC, lowerLimit, upperLimit);
+  return retVal;
 }
 
 void checkAndAlert(
@@ -59,14 +60,16 @@ void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
   switch(breachType) {
     case TOO_LOW:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too low\n");
+       printf("To: %s\n", recepient);
+      printf("Hi, the temperature is TOO_LOW");
       break;
     case TOO_HIGH:
       printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too high\n");
+      printf("Hi, the temperature is TOO_HIGH");
       break;
     case NORMAL:
       break;
   }
 }
+
+
