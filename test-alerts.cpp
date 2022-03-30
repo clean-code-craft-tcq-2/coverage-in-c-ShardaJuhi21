@@ -3,6 +3,19 @@
 #include "test/catch.hpp"
 #include "typewise-alert.h"
 
+extern const BatteryCharacter TestBatteryCharacter;
 TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(12, 20, 30) == TOO_LOW);
-}
+  REQUIRE(inferBreach(35, 20, 30) == TOO_HIGH);
+  REQUIRE(inferBreach(25, 20, 30) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING, 12) == TOO_LOW);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING, 12) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING, 25) == NORMAL);
+  REQUIRE(checkAndAlert(TO_CONTROLLER, PASSIVE_COOLING , 12) == TRUE);
+  REQUIRE(checkAndAlert(TO_EMAIL, MED_ACTIVE_COOLING, 25) == FALSE);
+  
+ }
+// TEST_CASE("infers the breach according to alerter") {
+// REQUIRE(checkAndAlert(TO_CONTROLLER,TestBatteryCharacter,12));
+
+// }

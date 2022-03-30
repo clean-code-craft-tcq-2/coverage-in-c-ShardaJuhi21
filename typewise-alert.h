@@ -1,9 +1,15 @@
 #pragma once
-
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+ 
+  #define TRUE 1
+#define FALSE 0
 typedef enum {
   PASSIVE_COOLING,
   HI_ACTIVE_COOLING,
-  MED_ACTIVE_COOLING
+  MED_ACTIVE_COOLING,
 } CoolingType;
 
 typedef enum {
@@ -14,6 +20,7 @@ typedef enum {
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
+BreachType apicooling( CoolingType coolingType, double temperatureInC);
 
 typedef enum {
   TO_CONTROLLER,
@@ -25,8 +32,12 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
-void checkAndAlert(
-  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
+int checkAndAlert(
+  AlertTarget alertTarget, CoolingType coolingType, double temperatureInC);
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
+  
+#ifdef __cplusplus
+}
+#endif
