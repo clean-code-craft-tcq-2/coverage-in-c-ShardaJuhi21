@@ -16,9 +16,14 @@ BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
   double ltemp = temperatureInC;
   BreachType retVal;
-  if (coolingType !=END){
+  if (coolingType !=MED_ACTIVE_COOLING){
 retVal = apicooling(coolingType, ltemp);
 }
+  else{
+  int lowerLimit =0;
+  int upperLimit = 35;
+   return inferBreach(ltemp, lowerLimit, upperLimit);
+  }
 }
 
 
@@ -27,9 +32,9 @@ BreachType apicooling( CoolingType coolingType, double temperatureInC)
 {
   double ltemp = temperatureInC;
   int lowerLimit =0;
-  int upperLimit = 35;
-if(coolingType == MED_ACTIVE_COOLING) {
-      upperLimit = 40;  
+  int upperLimit = 0;
+if(coolingType == PASSIVE_COOLING) {
+      upperLimit = 35;  
 }
 else if(coolingType == HI_ACTIVE_COOLING){
       upperLimit = 45;
