@@ -3,7 +3,9 @@
 extern "C"
 {
 #endif
-  
+ 
+  #define TRUE 1
+#define FALSE 0
 typedef enum {
   PASSIVE_COOLING,
   HI_ACTIVE_COOLING,
