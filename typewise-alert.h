@@ -32,7 +32,7 @@ typedef struct {
 
 
 
-void checkAndAlert(
+int checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
 void sendToController(BreachType breachType);
