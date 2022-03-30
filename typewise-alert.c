@@ -1,7 +1,8 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-
+#define TRUE 1
+#define FALSE 0
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
     return TOO_LOW;
@@ -41,20 +42,22 @@ else if(coolingType == HI_ACTIVE_COOLING){
   }
   return inferBreach(ltemp, lowerLimit, upperLimit);
 }
-void checkAndAlert(
+
+
+int checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
   BreachType breachType = classifyTemperatureBreach(
     batteryChar.coolingType, temperatureInC
   );
-
-  switch(alertTarget) {
-    case TO_CONTROLLER:
-      sendToController(breachType);
-      break;
-    case TO_EMAIL:
-      sendToEmail(breachType);
-      break;
+  
+  if(alertTarget == TO_CONTROLLER){
+  sendToController(breachType);
+    return TRUE;
+  }
+  else{
+  sendToEmail(breachType);
+    return FALSE;
   }
 }
 
