@@ -1,8 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-#define TRUE 1
-#define FALSE 0
+
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
     return TOO_LOW;
