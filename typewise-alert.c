@@ -14,26 +14,27 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
 
 BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
-  int lowerLimit = 0;
-  int upperLimit = 0;
-  BreachType retVal;
-  switch(coolingType) {
+  if (coolingType !=END){
+retVal = apicooling(coolingType, temperatureInC);
+}
+}
+
+
+
+BreachType apicooling( CoolingType coolingType, double temperatureInC)
+{
+  int lowerLimit =0;
+  int upperLimit = 40;
+switch(coolingType) {
     case PASSIVE_COOLING:
-      upperLimit = 35;
-      retVal= inferBreach(temperatureInC, lowerLimit, upperLimit);
+      upperLimit = 35;    
       break;
     case HI_ACTIVE_COOLING:
       upperLimit = 45;
-      retVal= inferBreach(temperatureInC, lowerLimit, upperLimit);
-      break;
-    case MED_ACTIVE_COOLING:
-      upperLimit = 40;
-      retVal= inferBreach(temperatureInC, lowerLimit, upperLimit);
       break;
   }
-  return retVal;
+  return inferBreach(temperatureInC, lowerLimit, upperLimit);
 }
-
 void checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
