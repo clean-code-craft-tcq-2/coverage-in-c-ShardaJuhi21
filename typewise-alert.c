@@ -44,7 +44,7 @@ else if(coolingType == HI_ACTIVE_COOLING){
 
 
 int checkAndAlert(
-    AlertTarget alertTarget, BatteryCharacter *batteryChar->coolingType, double temperatureInC) {
+    AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
   BreachType breachType = classifyTemperatureBreach(
     batteryChar.coolingType, temperatureInC
