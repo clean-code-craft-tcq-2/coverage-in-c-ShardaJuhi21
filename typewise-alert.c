@@ -31,7 +31,7 @@ BreachType apicooling( CoolingType coolingType, double temperatureInC)
 if(coolingType == MED_ACTIVE_COOLING) {
       upperLimit = 40;  
 }
-else if(coolingType == HI_ACTIVE_COOLING)
+else if(coolingType == HI_ACTIVE_COOLING){
       upperLimit = 45;
   }
   return inferBreach(ltemp, lowerLimit, upperLimit);
