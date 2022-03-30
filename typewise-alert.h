@@ -7,7 +7,8 @@ extern "C"
 typedef enum {
   PASSIVE_COOLING,
   HI_ACTIVE_COOLING,
-  MED_ACTIVE_COOLING
+  MED_ACTIVE_COOLING,
+  END
 } CoolingType;
 
 typedef enum {
@@ -18,6 +19,7 @@ typedef enum {
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
+BreachType apicooling( CoolingType coolingType, double temperatureInC);
 
 typedef enum {
   TO_CONTROLLER,
