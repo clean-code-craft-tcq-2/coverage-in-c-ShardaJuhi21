@@ -25,6 +25,7 @@ retVal = apicooling(coolingType, ltemp);
 
 BreachType apicooling( CoolingType coolingType, double temperatureInC)
 {
+  double ltemp = temperatureInC;
   int lowerLimit =0;
   int upperLimit = 35;
 switch(coolingType) {
@@ -35,7 +36,7 @@ switch(coolingType) {
       upperLimit = 45;
       break;
   }
-  return inferBreach(temperatureInC, lowerLimit, upperLimit);
+  return inferBreach(ltemp, lowerLimit, upperLimit);
 }
 void checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
